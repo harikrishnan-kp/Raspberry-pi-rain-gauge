@@ -1,6 +1,7 @@
 import RPi.GPIO as GPIO
 from datetime import datetime
 import time
+import csv
 
 interrupt_pin = 13
 GPIO.setmode(GPIO.BCM)
@@ -19,9 +20,13 @@ def reset_rainfall():
     global count
     count = 0
 
-def saving():      
-    rainfall = count * BUCKET_SIZE   
-    print("total rain accumulation in last 10s : %f mm"%rainfall)
+def saving(dt_now):      
+    rainfall = count * BUCKET_SIZE
+    file = open("rain_log.csv","a",newline = "")
+    tuple = (dt_now,rainfall)
+    writer_objt = csv.writer(file)
+    writer_objt.writerow(tuple)
+    file.close()
 
 GPIO.add_event_detect(interrupt_pin, GPIO.RISING, callback = bucket_tipped,bouncetime = 50)
 
@@ -32,7 +37,7 @@ try:
         dt_now = datetime.now()
         elapsed_time = dt_now - dt_start
         if elapsed_time.seconds % 10 == 0: 
-            saving()
+            saving(dt_now)
             time.sleep(1)
             reset_rainfall()  
 except KeyboardInterrupt:
