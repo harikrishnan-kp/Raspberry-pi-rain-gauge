@@ -33,7 +33,6 @@ GPIO.add_event_detect(interrupt_pin, GPIO.RISING, callback = bucket_tipped,bounc
 
 try:
     while True:      
-        time.sleep(0.01)
         dt_now = datetime.now()
         elapsed_time = dt_now - dt_start
         if elapsed_time.seconds % 10 == 0: 
