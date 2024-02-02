@@ -1,3 +1,5 @@
 # rain-gauge-using-raspberry-pi
-this is a setup to measure railfall using rasberry pi and davis mechanical raingauge.a python script running in will read the rain fall and store data in 10s intervals as csv file.
- 
+
+Rainfall also known as precipitation is an important part of environment stability. Inorder to have a sustainable echo system, it is important for living beings to have access to clean drinking water. It is also important for early flood warning as well. there are Many efforts to attain this objective depends on accurate precipitation monitoring.This project is an attempt to predict precipitation using davis tipping bucket rain gauge and raspberry pi 4.
+
+
