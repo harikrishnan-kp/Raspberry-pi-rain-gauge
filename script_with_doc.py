@@ -3,11 +3,11 @@ from datetime import datetime                                 # library for real
 import time                                                   # library to provide sleep
 import csv                                                    # library for data logging
 
-interrupt_pin = 13                                            # setting gpio 13 to take interrupt
-GPIO.setmode(GPIO.BCM)                                        # setting pin numbering to gpio(we can also use physical numbering)
-GPIO.setup(interrupt_pin,GPIO.IN,pull_up_down = GPIO.PUD_UP)  # setting pin in/out and pull down/pull high
+interrupt_pin = 13                                            # setting gpio 13 as interrupt pin
+GPIO.setmode(GPIO.BCM)                                        # setting pin numbering to gpio mode(we can also use physical numbering)
+GPIO.setup(interrupt_pin,GPIO.IN,pull_up_down = GPIO.PUD_UP)  # setting pin in/out and pulldown/pullup
 
-BUCKET_SIZE = 0.2                                             # davis rain gauge tipping bucket can hold max 0.2mm rain
+BUCKET_SIZE = 0.2                                             # davis rain gauge is calibrated to report 0.2 mm per tip.
 count = 0                                                     # for counting tipping
 dt_start = datetime.now()                                     # storing starting date and time
 
@@ -28,20 +28,22 @@ def saving(dt_now):                                           # function to stor
     writer_objt.writerow(tuple)
     file.close()
   
-GPIO.add_event_detect(interrupt_pin, GPIO.RISING, callback = bucket_tipped,bouncetime = 50) # inbuild function to detect interrupt 
-
+GPIO.add_event_detect(interrupt_pin, GPIO.RISING, callback = bucket_tipped,bouncetime = 50) # inbuild library function to detect interrupt.
+                                                                                            # this function run parellely with other codes in 
+                                                                                            # the python file without interrupting them.so we 
+                                                                                            # don't need to invoke this function.
+                                                                                            # switch bouncing time is set to 50ms(its a delay)
 
 try:
-    while True:                                              # this while loop is declared to work GPIO.add_event_detect function as loop 
-        time.sleep(0.01)                                     # need to find why this is added
+    while True:                   # infinite loop for keeping the code running continuously.this ensure interrupt detection function is always ON. 
         dt_now = datetime.now()
         elapsed_time = dt_now - dt_start
-        if elapsed_time.seconds % 10 == 0:                   # for storing data in every 10s interval
+        if elapsed_time.seconds % 10 == 0:                                                  # for storing data in every 10s interval
             saving(dt_now)
-            time.sleep(1)    # sleep is added to avoid multiple data storing when when if condition is satisfied for a period of 1second
+            time.sleep(1)             # sleep is added to avoid multiple data storing when when if condition is satisfied for a period of 1second
             reset_rainfall()  
 except KeyboardInterrupt:
-    GPIO.cleanup()                                           # cleaning gpio pins when there is a keyboard interrupt
+    GPIO.cleanup()                                                            # cleaning gpio pins when there is a keyboard interrupt (ie,ctrl+c)
     
     
     
