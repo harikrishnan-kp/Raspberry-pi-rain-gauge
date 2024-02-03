@@ -11,7 +11,7 @@ Rainguages are mainly attached in association with weather station for monitorin
 
 ## Hardware setup
 Raspberry pi GPIO 13 and GND pins are connected to two wires from read switch of mechanical rain gauge.
-Raspberry pi is powered by a 5v,15ah lithium-ion battery pack.a 100kv solar panel with charge controller is used for recharging.
+Raspberry pi is powered by a 5v,15ah lithium-ion battery pack.a 100w solar panel with charge controller is used for recharging.
 Data collection is achieved by connecting raspberry pi with a router using ethernet cable.ssh is used for data tranferring  
 
 <img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/ac7802241a44cf78f27233e284e040065e3c8561/docs/hardware%20setup.jpg"  width ="500">
