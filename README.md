@@ -6,13 +6,15 @@ Rainguages are mainly attached in association with weather station for monitorin
 ### Data acquisition devices(DAQs)
 1. Davis AeroCone 6466M Rain Gauge is the mechanical raingauge.
 2. Raspberry Pi 4 model B as a DAQ device for processing and storing data from davis mechanical raingauge.
-<img src="https://m.media-amazon.com/images/I/612KqYGrL7L._AC_SX466_.jpg" widht="100"/>   <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg/1200px-Raspberry_Pi_4_Model_B_-_Side.jpg" alt="raspberrypi" width="400"/>
+
+<img src="https://m.media-amazon.com/images/I/612KqYGrL7L._AC_SX466_.jpg" height="300"/>      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg/1200px-Raspberry_Pi_4_Model_B_-_Side.jpg" alt="raspberrypi" width="350"/>
 
 ## Hardware setup
 Raspberry pi GPIO 13 and GND pins are connected to two wires from read switch of mechanical rain gauge.
 Raspberry pi is powered by a 5v,15ah lithium-ion battery pack.a 100kv solar panel with charge controller is used for recharging.
 Data collection is achieved by connecting raspberry pi with a router using ethernet cable.ssh is used for data tranferring  
 
+<img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/ac7802241a44cf78f27233e284e040065e3c8561/docs/hardware%20setup.jpg"  width ="500">
 ### Software setup 
 python code in this setup utilizes the Rpi.GPIO library for detecting interrupts. GPIO pin 13 of the Raspberry Pi is set in a pulled-up condition by default, achieved through internal resistors and built-in software functions.the code is designed to detect the rising edge of the interrupt signal. Additionally, we've incorporated a bouncing delay of 50ms to mitigate switch bouncing issues.this code also has a capability of storing data as csv file in 10s inretval.
 
