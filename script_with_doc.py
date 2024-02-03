@@ -9,6 +9,7 @@ GPIO.setup(interrupt_pin,GPIO.IN,pull_up_down = GPIO.PUD_UP)  # setting pin in/o
 
 BUCKET_SIZE = 0.2                                             # davis rain gauge is calibrated to report 0.2 mm per tip.
 count = 0                                                     # for counting tipping
+log_count = 0                                                 # for counting data logging
 dt_start = datetime.now()                                     # storing starting date and time
 
 def bucket_tipped(interrupt_pin):                             # function to count tipping
@@ -39,11 +40,14 @@ try:
         dt_now = datetime.now()
         elapsed_time = dt_now - dt_start
         if elapsed_time.seconds % 10 == 0:                                                  # for storing data in every 10s interval
-            saving(dt_now)
-            time.sleep(1)             # sleep is added to avoid multiple data storing when when if condition is satisfied for a period of 1second
-            reset_rainfall()  
+            if log_count == 0:                                                              # to avoid unwanted multiple data logging
+                saving(dt_now)
+                reset_rainfall()
+                log_count = 1  
+        else:
+            log_count = 0        
 except KeyboardInterrupt:
-    GPIO.cleanup()                                                            # cleaning gpio pins when there is a keyboard interrupt (ie,ctrl+c)
+    GPIO.cleanup()                   # cleaning gpio pins when there is a keyboard interrupt (ie,ctrl+c)
     
     
     
