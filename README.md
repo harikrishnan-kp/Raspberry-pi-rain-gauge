@@ -15,7 +15,7 @@ Raspberry pi is powered by a 5v,15ah lithium-ion battery pack.a 100w solar panel
 Data collection is achieved by connecting raspberry pi with a nearby router using ethernet cable.
 secure shell (SSH) protocol is used for transferring data to our system.   
 
-<img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/ac7802241a44cf78f27233e284e040065e3c8561/docs/hardware%20setup.jpg"  width ="500">
+<img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/be1930543c1d64de2b89c4dc69c4965bb87f0bd6/docs/hardware%20setup%201.jpg"  width ="500">
 
 ### Software setup 
 python code in this setup utilizes Rpi.GPIO library for detecting interrupts.GPIO pin 13 of the Raspberry Pi is set in a pulled-up condition by default, achieved through internal resistors and built-in software functions.the code is designed to detect the rising edge of the interrupt signal. Additionally, we've incorporated a bouncing delay of 50ms to mitigate switch bouncing issues.this code also has a capability of storing data as csv file in 10s inretval.
