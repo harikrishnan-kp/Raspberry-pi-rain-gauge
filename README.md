@@ -4,7 +4,7 @@ Rainguages are mainly attached in association with weather station for monitorin
 
 
 ### Data acquisition devices(DAQs)
-1. Davis AeroCone 6466M Rain Gauge is the mechanical raingauge.
+1. [Davis AeroCone 6466M](https://www.amazon.de/-/en/Davis-AeroCone-6466M-Gauge-Sensor/dp/B08629NFVG) is the mechanical raingauge.
 2. Raspberry Pi 4 model B as a DAQ device for processing and storing data from davis mechanical raingauge.
 
 <img src="https://m.media-amazon.com/images/I/612KqYGrL7L._AC_SX466_.jpg" height="300"/>      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg/1200px-Raspberry_Pi_4_Model_B_-_Side.jpg" alt="raspberrypi" width="350"/>
