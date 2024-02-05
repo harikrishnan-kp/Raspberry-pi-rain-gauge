@@ -29,8 +29,11 @@ This rain gauge has all the limitations of a mechanical raingauge
 ### Error need to be resolved
 the bouncing time delay (50ms)provided in the program may result in errors in counting.(ie,when switch is in a closed condition for more than 50ms,)
 
+### future updates
+Data logging feature need to improved,as of now it is difficult to take desired data when there is alot of data.data logging must be structured based on days,hour for easy accessing data.
+
 ### FAQ
-why raspberry pi is choosed instaed of other boards : our icfoss R%D team was working on a acoustic rain gauge using machine learning technology.machine learning model was teached by comparing data collected from a mic and davis rain guage.both data gathering setup were using arduino as processing unit.but sampling rate of arduino was not enough for training ml model, so we switched our sound data gathering system to to raspberry pi which can provide high sampling rate compared to arduino.inorder to make data comparison easy and to resolve timestamping issues davis rain gauge is also moved to raspberry pi
+why raspberry pi is choosed instaed of other boards : our icfoss R&D team was working on a acoustic rain gauge using machine learning technology.machine learning model was teached by comparing data collected from a mic and davis rain guage.both data gathering setup were using arduino as processing unit.but sampling rate of arduino was not enough for training ml model, so we switched our sound data gathering system to to raspberry pi which can provide high sampling rate compared to arduino.inorder to make data comparison easy and to resolve timestamping issues davis rain gauge is also moved to raspberry pi
 
 
 
