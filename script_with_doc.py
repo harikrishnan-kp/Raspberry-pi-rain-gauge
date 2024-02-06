@@ -4,7 +4,7 @@ import csv  # library for data logging
 
 interrupt_pin = 13  # setting  gpio 13 as interrupt pin
 GPIO.setmode(GPIO.BCM)  # setting pin numbering to gpio mode(we can also use physical numbering)
-GPIO.setup(interrupt_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)  # setting pin in/out and pulldown/pullup
+GPIO.setup(interrupt_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)   # setting pin in/out and pulldown/pullup
 
 BUCKET_SIZE = 0.2  # davis rain gauge is calibrated to report 0.2 mm per tip.
 count = 0  # for counting tipping
