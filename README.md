@@ -15,18 +15,18 @@ Raspberry pi GPIO 13 and GND pins are connected to two wires from read switch of
 <img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/be1930543c1d64de2b89c4dc69c4965bb87f0bd6/docs/hardware%20setup%201.jpg"  width ="500">
 
 ### Software setup 
-python code in this setup utilizes Rpi.GPIO library for detecting interrupts.GPIO pin 13 of the Raspberry Pi is set in a pulled-up condition by default, achieved through internal resistors and built-in software functions.the code is designed to detect the rising edge of the interrupt signal. Additionally, we've incorporated a bouncing delay of 50ms to mitigate switch bouncing issues.this code also has a capability of storing data as csv file in 10s inretval.
+python code in this setup utilizes **Rpi.GPIO** library for detecting interrupts.GPIO pin 13 of the Raspberry Pi is set in a pulled-up condition by default, achieved through internal resistors and built-in software functions.the code is designed to detect the rising edge of the interrupt signal. Additionally, we've incorporated a bouncing delay of 50ms to mitigate switch bouncing issues.this code also has a capability of storing data as csv file in 10s inretval.
 
 ### Working
 GPIO pin 13 of the Raspberry Pi is set in a pulled-up condition by default,achieved through internal resistors and built-in software functions.when GPIO 13 pin changes to low state as the result of tipping action(closing read switch) in davis rain gauge.Our code will detect the interrupt signal.python code will count number of interrupt signal and convert this data to amount of rainfall,and store it as csv file in 10s interval.data stored in rasberry pi can be accessed by ssh protocol.
 
 ### Limitations
 This rain gauge has the following limitations.
-Accuracy: Tipping bucket rain gauges may not always provide accurate measurements, especially during heavy rainfall events or in windy conditions. Splashing or wind-driven rain can lead to inaccuracies in measurement.
-Underestimation of Intense Rainfall:During intense rainfall, the tipping bucket mechanism may not be able to keep up with the rapid influx of water, leading to underestimation of rainfall amounts.
-Evaporation Losses: Tipping bucket rain gauges are susceptible to evaporation losses, especially in warm and windy conditions.
-Maintenance Requirements: Tipping bucket rain gauges require regular maintenance to ensure accurate measurement.
-Freezing and Snow Accumulation: In cold climates, freezing temperatures and snow accumulation can interfere with the operation of tipping bucket rain gauges.
+* **Accuracy:** Tipping bucket rain gauges may not always provide accurate measurements, especially during heavy rainfall events or in windy conditions. Splashing or wind-driven rain can lead to inaccuracies in measurement.
+* **Underestimation of Intense Rainfall:** During intense rainfall, the tipping bucket mechanism may not be able to keep up with the rapid influx of water, leading to underestimation of rainfall amounts.
+* **Evaporation Losses:** Tipping bucket rain gauges are susceptible to evaporation losses, especially in warm and windy conditions.
+* **Maintenance Requirements:** Tipping bucket rain gauges require regular maintenance to ensure accurate measurement.
+* **Freezing and Snow Accumulation:** In cold climates, freezing temperatures and snow accumulation can interfere with the operation of tipping bucket rain gauges.
 
 Despite these limitations, tipping bucket rain gauges remain valuable tools for monitoring rainfall in many applications
 
