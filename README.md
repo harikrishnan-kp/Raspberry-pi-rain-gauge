@@ -27,6 +27,7 @@ This rain gauge has the following limitations.
 * **Evaporation Losses:** Tipping bucket rain gauges are susceptible to evaporation losses, especially in warm and windy conditions.
 * **Maintenance Requirements:** Tipping bucket rain gauges require regular maintenance to ensure accurate measurement.
 * **Freezing and Snow Accumulation:** In cold climates, freezing temperatures and snow accumulation can interfere with the operation of tipping bucket rain gauges.
+
 Despite these limitations, tipping bucket rain gauges remain valuable tools for monitoring rainfall in many applications
 
 ### Error need to be resolved
