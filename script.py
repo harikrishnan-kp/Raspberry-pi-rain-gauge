@@ -4,7 +4,7 @@ import csv
 
 interrupt_pin = 13
 GPIO.setmode(GPIO.BCM)
-GPIO.setup(interrupt_pin, GPIO.IN, pull_up_down = GPIO.PUD_UP)
+GPIO.setup(interrupt_pin, GPIO.IN, pull_up_down=GPIO.PUD_UP)
 
 BUCKET_SIZE = 0.2
 count = 0
@@ -26,14 +26,14 @@ def reset_rainfall():
 def saving(dt_now):
     rainfall = count * BUCKET_SIZE
     # print(rainfall)
-    file = open("rain_log.csv", "a", newline = "")
+    file = open("rain_log.csv", "a", newline="")
     tuple = (dt_now, rainfall)
     writer_objt = csv.writer(file)
     writer_objt.writerow(tuple)
     file.close()
 
 
-GPIO.add_event_detect(interrupt_pin, GPIO.RISING, callback = bucket_tipped, bouncetime = 50)
+GPIO.add_event_detect(interrupt_pin, GPIO.RISING, callback=bucket_tipped, bouncetime=50)
 
 
 try:
