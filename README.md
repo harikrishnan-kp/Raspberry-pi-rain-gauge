@@ -13,9 +13,9 @@ In the current climatic context, the importance of an accurate rain measurement 
 Raspberry pi GPIO 13 and GND pins are connected to two wires from read switch of davis mechanical rain gauge.Raspberry pi is powered by a 5v,15ah lithium-ion battery pack.a 100w solar panel with charge controller is used for recharging.Data collection is achieved by connecting raspberry pi with a nearby router using ethernet cable(we can also use wifi for connecting to router).secure shell (SSH) protocol is used for transferring data to our computer system.   
 
 ## Software setup 
-Install **Rpi.GPIO** library in raspberry pi for detecting interrupts.
+Install **RPi.GPIO** library in raspberry pi for detecting interrupts.
 ```console
-pip install Rpi.GPIO
+pip install RPi.GPIO
 ```
 Paste **script.py** in raspberry pi and run it.
 
