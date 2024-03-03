@@ -10,7 +10,7 @@ In the current climatic context, the importance of an accurate rain measurement 
 <img src="https://m.media-amazon.com/images/I/612KqYGrL7L._AC_SX466_.jpg" height="300"/>      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg/1200px-Raspberry_Pi_4_Model_B_-_Side.jpg" alt="raspberrypi" width="350"/>
 
 ## Hardware setup
-Raspberry pi GPIO 13 and GND pins are connected to two wires from read switch of davis mechanical rain gauge.Raspberry pi is powered by a 5v,15ah lithium-ion battery pack.a 100w solar panel with charge controller is used for recharging.Data collection is achieved by connecting raspberry pi with a nearby router using ethernet cable(we can also use wifi for connecting to router).secure shell (SSH) protocol is used for transferring data to our computer system.   
+Raspberry pi GPIO 13 and GND pins are connected to two wires from read switch of davis mechanical rain gauge.Raspberry pi is powered by a 5v,15ah lithium-ion battery pack.a 100w solar panel with charge controller is used for recharging.Data collection is achieved by connecting raspberry pi with a nearby router using wifi.secure shell (SSH) protocol is used for transferring data to our computer system.   
 
 <img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/b4f3d258492a1cd60d26f9c5ed6e8f794b5cb34e/docs/hardware%20connection.png"  width ="900">
 
