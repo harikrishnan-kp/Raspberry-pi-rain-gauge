@@ -1,6 +1,8 @@
 import RPi.GPIO as GPIO
 from datetime import datetime
 import csv
+import influxdb_client
+from influxdb_client.client.write_api import SYNCHRONOUS
 
 interrupt_pin = 13
 GPIO.setmode(GPIO.BCM)
@@ -33,16 +35,33 @@ def saving(dt_now):
     file.close()
 
 
+def influxdb() -> bool:
+    rain = count * BUCKET_SIZE
+    # Configure influxDB credentials 
+    bucket = "<bucket name>" 
+    org = "<org name>"      
+    token = "<token>"
+    url= "<url of DB>"
+
+    client = influxdb_client.InfluxDBClient(url=url,token=token,org=org)
+    write_api = client.write_api(write_options=SYNCHRONOUS)
+    p = influxdb_client.Point("rainfall").tag("location","some where on earth").field("rain in mm",rain)
+    write_api.write(bucket=bucket, org=org, record=p)
+    client.close()
+    return True
+
+
 GPIO.add_event_detect(interrupt_pin, GPIO.RISING, callback=bucket_tipped, bouncetime=50)
 
 
 try:
     while True:
         dt_now = datetime.now()
-        elapsed_time = dt_now - dt_start
-        if elapsed_time.seconds % 10 == 0:
+        elapsed_time = dt_now.minute - dt_start.minute
+        if elapsed_time % 5 == 0:
             if log_count == 0:
                 saving(dt_now)
+                influxdb()
                 reset_rainfall()
                 log_count = 1
         else:
