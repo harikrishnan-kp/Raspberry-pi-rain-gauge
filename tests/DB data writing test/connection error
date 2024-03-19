@@ -1,0 +1,77 @@
+pi was not connecting with db and showing connectin error,check the following error messages
+
+
+pi@pi:~$ ls
+raingauge  script.py
+pi@pi:~$ nano script.py 
+pi@pi:~$ python3 script.py
+Traceback (most recent call last):
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 169, in _new_conn
+    conn = connection.create_connection(
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 96, in create_connection
+    raise err
+  File "/usr/lib/python3/dist-packages/urllib3/util/connection.py", line 86, in create_connection
+    sock.connect(sa)
+TimeoutError: timed out
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
+  File "/home/pi/script.py", line 64, in <module>
+    influxdb()
+  File "/home/pi/script.py", line 49, in influxdb
+    write_api.write(bucket=bucket, org=org, record=p)
+  File "/home/pi/.local/lib/python3.10/site-packages/influxdb_client/client/write_api.py", line 381, in write
+    results = list(map(write_payload, payloads.items()))
+  File "/home/pi/.local/lib/python3.10/site-packages/influxdb_client/client/write_api.py", line 379, in write_payload
+    return self._post_write(_async_req, bucket, org, final_string, payload[0])
+  File "/home/pi/.local/lib/python3.10/site-packages/influxdb_client/client/write_api.py", line 516, in _post_write
+    return self._write_service.post_write(org=org, bucket=bucket, body=body, precision=precision,
+  File "/home/pi/.local/lib/python3.10/site-packages/influxdb_client/service/write_service.py", line 60, in post_write
+    (data) = self.post_write_with_http_info(org, bucket, body, **kwargs)  # noqa: E501
+  File "/home/pi/.local/lib/python3.10/site-packages/influxdb_client/service/write_service.py", line 90, in post_write_with_http_info
+    return self.api_client.call_api(
+  File "/home/pi/.local/lib/python3.10/site-packages/influxdb_client/_sync/api_client.py", line 343, in call_api
+    return self.__call_api(resource_path, method,
+  File "/home/pi/.local/lib/python3.10/site-packages/influxdb_client/_sync/api_client.py", line 173, in __call_api
+    response_data = self.request(
+  File "/home/pi/.local/lib/python3.10/site-packages/influxdb_client/_sync/api_client.py", line 388, in request
+    return self.rest_client.POST(url,
+  File "/home/pi/.local/lib/python3.10/site-packages/influxdb_client/_sync/rest.py", line 311, in POST
+    return self.request("POST", url,
+  File "/home/pi/.local/lib/python3.10/site-packages/influxdb_client/_sync/rest.py", line 220, in request
+    r = self.pool_manager.request(
+  File "/usr/lib/python3/dist-packages/urllib3/request.py", line 78, in request
+    return self.request_encode_body(
+  File "/usr/lib/python3/dist-packages/urllib3/request.py", line 170, in request_encode_body
+    return self.urlopen(method, url, **extra_kw)
+  File "/usr/lib/python3/dist-packages/urllib3/poolmanager.py", line 375, in urlopen
+    response = conn.urlopen(method, u.request_uri, **kw)
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 756, in urlopen
+    retries = retries.increment(
+  File "/usr/lib/python3/dist-packages/urllib3/util/retry.py", line 507, in increment
+    raise six.reraise(type(error), error, _stacktrace)
+  File "/usr/lib/python3/dist-packages/six.py", line 719, in reraise
+    raise value
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 700, in urlopen
+    httplib_response = self._make_request(
+  File "/usr/lib/python3/dist-packages/urllib3/connectionpool.py", line 395, in _make_request
+    conn.request(method, url, **httplib_request_kw)
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 234, in request
+    super(HTTPConnection, self).request(method, url, body=body, headers=headers)
+  File "/usr/lib/python3.10/http/client.py", line 1283, in request
+    self._send_request(method, url, body, headers, encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1329, in _send_request
+    self.endheaders(body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1278, in endheaders
+    self._send_output(message_body, encode_chunked=encode_chunked)
+  File "/usr/lib/python3.10/http/client.py", line 1038, in _send_output
+    self.send(msg)
+  File "/usr/lib/python3.10/http/client.py", line 976, in send
+    self.connect()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 200, in connect
+    conn = self._new_conn()
+  File "/usr/lib/python3/dist-packages/urllib3/connection.py", line 174, in _new_conn
+    raise ConnectTimeoutError(
+urllib3.exceptions.ConnectTimeoutError: (<urllib3.connection.HTTPConnection object at 0xffff9f83da80>, 'Connection to 117.223.185.200 timed out. (connect timeout=10.0)')
+

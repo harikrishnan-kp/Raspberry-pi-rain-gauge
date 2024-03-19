@@ -1,0 +1,21 @@
+
+if we are installing rasbian os 64 bit
+pip install influxdb-client won't work.they will recomment to try using apt.but apt doesnot contain the package influxdb-cleint.so we need to create a virtual environment for installing influxdb client.
+
+if we are installing ubuntu server os 22.04.4
+pip install influxdb client works perfectly,but gpio says error: failed to add edge detection.you need to install the following dependencies if there is an error named as failed to add egde detection.
+
+
+# GPIO setup in Raspberry Pi
+sudo apt-get install python3-rpi.gpio
+pip install lgpio==0.0.0.2
+ls -l /sys/class/gpio/
+sudo chmod 777 /sys/class/gpio/export 
+sudo echo 6 > /sys/class/gpio/export 
+ls /sys/class/gpio/
+ls -l /sys/class/gpio/gpio6/ 
+sudo chmod 777 /sys/class/gpio/gpio6/direction 
+sudo echo in > /sys/class/gpio/gpio6/direction 
+ls -l /sys/class/gpio/gpio6/direction 
+ls -l /sys/class/gpio/gpio6/edge 
+sudo chmod 777 /sys/class/gpio/gpio6/edge 
