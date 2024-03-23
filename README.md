@@ -10,19 +10,42 @@ In the current climatic context, the importance of an accurate rain measurement 
 <img src="https://m.media-amazon.com/images/I/612KqYGrL7L._AC_SX466_.jpg" height="300"/>      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg/1200px-Raspberry_Pi_4_Model_B_-_Side.jpg" alt="raspberrypi" width="350"/>
 
 ## Hardware setup
-Raspberry pi GPIO 13 and GND pins are connected to two wires from read switch of davis mechanical rain gauge.Raspberry pi is powered by a 5v,15ah lithium-ion battery pack.a 100w solar panel with charge controller is used for recharging.Data collection is achieved by connecting raspberry pi with a nearby router using wifi.secure shell (SSH) protocol is used for transferring data to our computer system.   
+Raspberry pi GPIO 13 and GND pins are connected to two wires from read switch of davis mechanical rain gauge.Raspberry pi is powered by a 5v,15ah lithium-ion battery pack.a 100w solar panel with charge controller is used for recharging.Data collection is achieved by connecting raspberry-pi with a nearby internet router using wifi or ethernet cable.  
 
 <img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/b4f3d258492a1cd60d26f9c5ed6e8f794b5cb34e/docs/hardware%20connection.png"  width ="900">
 
 ## Software setup 
-Install **RPi.GPIO** library in raspberry pi for detecting interrupts.
+Install **RPi.GPIO** library in raspberry-pi for detecting interrupts.
 ```console
 pip install RPi.GPIO
 ```
-Paste **script.py** in raspberry pi and run it.
+Install **influxdb python client** library in raspberry-pi for writing data to influxDB.
+```console
+pip install influxdb-client
+```
+
+Paste **script.py** in raspberry pi and add credential of your influxDB database to function 'influxdb()' in script.py
+for more details about influxDB setup visit https://docs.influxdata.com/influxdb/v2/get-started/setup/
+
+for visualization of data setup grafana dashboard 
+for more details : https://grafana.com/docs/grafana/latest/setup-grafana/installation/
+setup your influxdb bucket as data source in grafana and paste the query given below or query generated in your influxdb
+
+from(bucket: " <**paste your bucket name here**> ")
+  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
+  |> filter(fn: (r) => r["_measurement"] == "rainfall")
+  |> filter(fn: (r) => r["_field"] == "rain in mm")
+  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
+  |> yield(name: "mean")
+
+Run script.py
+```console
+python3 script.py
+```
+if there is an error check docs/general instructions.txt
 
 ## Working
-GPIO pin 13 of the Raspberry Pi is set in a pulled-up condition by default,achieved through internal resistors and built-in software functions.when there is a tipping action(closing read switch) in davis rain gauge,GPIO 13 pin change it's state from high to low.python code will detect this interrupt (rising edge of interrupt signal) and count it.A bouncing delay of 50ms is added to mitigate switch bouncing issues.In every 10s interval the count will convert into amount of rainfall and store it as csv file along with time stamping.Data stored in rasberry pi can be accessed by ssh protocol.
+GPIO pin 13 of the Raspberry Pi is set in a pulled-up condition by default,achieved through internal resistors and built-in software functions.when there is a tipping action(closing read switch) in davis rain gauge,GPIO 13 pin change it's state from high to low.python code will detect this interrupt (rising edge of interrupt signal) and count it.A bouncing delay of 50ms is added to mitigate switch bouncing issues.In every 5 minutes interval the count will convert into amount of rainfall.The rainfall data will store in influxdb and as csv file along with time stamping in raspberry-pi. Data stored in rasberry pi can be accessed by ssh protocol if we unabled ssh service in raspberry-pi. visualization of data is possible using grafana.
 
 ## Limitations
 This rain gauge has the following limitations.
@@ -39,7 +62,6 @@ The bouncing time delay (50ms)provided in the program may result in errors in co
 
 ## Future updates
 * Data logging feature need to improved,as of now it is difficult to take desired data when there is alot of data.data logging must be structured based on days,hour for easy accessing data.
-* Database integration
 
 ### FAQ
 why raspberry pi is choosed instead of other boards as DAQ: our icfoss R&D team was working on a acoustic rain gauge using machine learning technology.machine learning model was teached by comparing data collected from acoustic DAQ setup and davis mechanical rain guage.Both data gathering setup were using arduino as processing unit.but sampling rate of arduino was not enough for training ML model,To compensate the issue we switched our sound data gathering system to raspberry pi-4 which can provide high sampling rate compared to arduino.inorder to make data comparison easy and to resolve issues related to timestamping, davis rain gauge is also moved to raspberry pi DAQ.

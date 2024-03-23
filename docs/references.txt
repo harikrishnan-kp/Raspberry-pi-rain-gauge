@@ -1,0 +1,14 @@
+references
+
+#GPIO
+https://www.youtube.com/watch?v=tI6B6BRKU5k&t=596s (bouncing concept)
+https://www.youtube.com/watch?v=T67VfwiJPMg (interrupt reading)
+https://sourceforge.net/p/raspberry-gpio-python/wiki/Inputs/ (details about RPi.GPIO)
+http://raspi.tv/2013/how-to-use-interrupts-with-python-on-the-raspberry-pi-and-rpi-gpio-part-3
+
+# INFLUX DB
+for more details : https://docs.influxdata.com/influxdb/cloud/api-guide/client-libraries/python/#
+Documentation of influxDB 2.0 python client : https://influxdb-client.readthedocs.io/en/latest/
+github  influxDB 2.0 python client library : https://github.com/influxdata/influxdb-client-python
+Line Protocol : https://docs.influxdata.com/influxdb/cloud/reference/syntax/line-protocol/
+csv annotation : https://docs.influxdata.com/influxdb/cloud/reference/syntax/annotated-csv/#annotated-csv-in-flux
