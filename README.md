@@ -1,13 +1,13 @@
 ﻿# Rain-gauge-using-raspberry-pi
 In the current climatic context, the importance of an accurate rain measurement system is indispensable for various sectors and activities, playing a critical role in water resource management, flood prediction, weather forecasting, agriculture, climate research, environmental monitoring, infrastructure planning and hydrological studies.There are Many efforts to attain accurate precipitation monitoring and analysis.This project is an attempt to estimate precipitation using davis tipping bucket rain sensor and raspberry pi-4.
 
-<img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/be1930543c1d64de2b89c4dc69c4965bb87f0bd6/docs/hardware%20setup%201.jpg"  width ="500">
+<img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/be1930543c1d64de2b89c4dc69c4965bb87f0bd6/docs/hardware%20setup%201.jpg"  width ="300"> <img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/88f24dbe64357f8fa18fae8643891db430b5a3c0/docs/pics/grafana%20dashboard.png" width ="445">
 
 ## Data acquisition devices(DAQs)
 1. [Davis AeroCone 6466M](https://www.amazon.de/-/en/Davis-AeroCone-6466M-Gauge-Sensor/dp/B08629NFVG) is the mechanical raingauge.
 2. Raspberry Pi 4 model B as a DAQ device for processing and storing data from davis mechanical raingauge.
 
-<img src="https://m.media-amazon.com/images/I/612KqYGrL7L._AC_SX466_.jpg" height="300"/>      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg/1200px-Raspberry_Pi_4_Model_B_-_Side.jpg" alt="raspberrypi" width="350"/>
+<img src="https://m.media-amazon.com/images/I/612KqYGrL7L._AC_SX466_.jpg" height="250"/>      <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Raspberry_Pi_4_Model_B_-_Side.jpg/1200px-Raspberry_Pi_4_Model_B_-_Side.jpg" alt="raspberrypi" width="300"/>
 
 ## Hardware setup
 Raspberry pi GPIO 13 and GND pins are connected to two wires from read switch of davis mechanical rain gauge.Raspberry pi is powered by a 5v,15ah lithium-ion battery pack.a 100w solar panel with charge controller is used for recharging.Data collection is achieved by connecting raspberry-pi with a nearby internet router using wifi or ethernet cable.  
@@ -24,19 +24,12 @@ Install **influxdb python client** library in raspberry-pi for writing data to i
 pip install influxdb-client
 ```
 
-Paste **script.py** in raspberry pi and add credential of your influxDB database to function 'influxdb()' in script.py
+Paste **script.py** in raspberry pi and add credential of your influxDB database to function 'influxdb()' in script.py   
 for more details about influxDB setup visit https://docs.influxdata.com/influxdb/v2/get-started/setup/
 
-for visualization of data setup grafana dashboard 
-for more details : https://grafana.com/docs/grafana/latest/setup-grafana/installation/
-setup your influxdb bucket as data source in grafana and paste the query given below or query generated in your influxdb
-
-from(bucket: " <**paste your bucket name here**> ")
-  |> range(start: v.timeRangeStart, stop: v.timeRangeStop)
-  |> filter(fn: (r) => r["_measurement"] == "rainfall")
-  |> filter(fn: (r) => r["_field"] == "rain in mm")
-  |> aggregateWindow(every: v.windowPeriod, fn: mean, createEmpty: false)
-  |> yield(name: "mean")
+for visualization of data setup grafana dashboard.    
+for more details : https://grafana.com/docs/grafana/latest/setup-grafana/installation/   
+setup your influxdb bucket as data source in grafana and paste the query from docs/query.txt or query generated in your influxdb
 
 Run script.py
 ```console
