@@ -1,7 +1,7 @@
 ﻿# Rain-gauge-using-raspberry-pi
 In the current climatic context, the importance of an accurate rain measurement system is indispensable for various sectors and activities, playing a critical role in water resource management, flood prediction, weather forecasting, agriculture, climate research, environmental monitoring, infrastructure planning and hydrological studies.There are Many efforts to attain accurate precipitation monitoring and analysis.This project is an attempt to estimate precipitation using davis tipping bucket rain sensor and raspberry pi-4.
 
-<img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/be1930543c1d64de2b89c4dc69c4965bb87f0bd6/docs/hardware%20setup%201.jpg"  width ="300"> <img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/88f24dbe64357f8fa18fae8643891db430b5a3c0/docs/pics/grafana%20dashboard.png" width ="445">
+<img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/be1930543c1d64de2b89c4dc69c4965bb87f0bd6/docs/hardware%20setup%201.jpg"  width ="330"> <img src="https://github.com/Thelastblackpearl/rain-gauge-using-raspberry-pi/blob/88f24dbe64357f8fa18fae8643891db430b5a3c0/docs/pics/grafana%20dashboard.png" width ="490">
 
 ## Data acquisition devices(DAQs)
 1. [Davis AeroCone 6466M](https://www.amazon.de/-/en/Davis-AeroCone-6466M-Gauge-Sensor/dp/B08629NFVG) is the mechanical raingauge.
