@@ -19,3 +19,10 @@ sudo echo in > /sys/class/gpio/gpio6/direction
 ls -l /sys/class/gpio/gpio6/direction 
 ls -l /sys/class/gpio/gpio6/edge 
 sudo chmod 777 /sys/class/gpio/gpio6/edge 
+
+
+# NOTE
+gpio in linux systems: https://embeddedbits.org/linux-kernel-gpio-user-space-interface-embeddedbits-2/
+
+# another library(new version)
+https://pypi.org/project/rpi-lgpio/#description
