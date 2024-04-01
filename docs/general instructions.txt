@@ -23,6 +23,7 @@ sudo chmod 777 /sys/class/gpio/gpio6/edge
 
 # NOTE
 gpio in linux systems: https://embeddedbits.org/linux-kernel-gpio-user-space-interface-embeddedbits-2/
+https://waldorf.waveform.org.uk/2021/the-pins-they-are-a-changin.html
 
 # another library(new version)
 https://pypi.org/project/rpi-lgpio/#description
