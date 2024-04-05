@@ -7,7 +7,6 @@
 * (bouncing concept) https://www.youtube.com/watch?v=tI6B6BRKU5k&t=596s
 * (interrupt reading) https://www.youtube.com/watch?v=T67VfwiJPMg 
 * (details about RPi.GPIO) https://sourceforge.net/p/raspberry-gpio-python/wiki/Inputs/ 
-
 * http://raspi.tv/2013/how-to-use-interrupts-with-python-on-the-raspberry-pi-and-rpi-gpio-part-3
 * https://waldorf.waveform.org.uk/2021/the-pins-they-are-a-changin.html
 * (new version of gpio library): https://pypi.org/project/rpi-lgpio/#description 
