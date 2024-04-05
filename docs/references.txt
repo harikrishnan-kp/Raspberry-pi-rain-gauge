@@ -1,6 +1,8 @@
 references
 
 #GPIO
+https://pypi.org/project/RPi.GPIO/
+https://sourceforge.net/projects/raspberry-gpio-python/ (repository of rpi.gpio)
 https://www.youtube.com/watch?v=tI6B6BRKU5k&t=596s (bouncing concept)
 https://www.youtube.com/watch?v=T67VfwiJPMg (interrupt reading)
 https://sourceforge.net/p/raspberry-gpio-python/wiki/Inputs/ (details about RPi.GPIO)
