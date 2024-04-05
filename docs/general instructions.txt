@@ -3,49 +3,30 @@
 The RPi.GPIO module is installed by default in Raspbian. To make sure that it is at the latest version:
     $ sudo apt-get update
     $ sudo apt-get install python-rpi.gpio python3-rpi.gpio
-To install the latest development version from the project source code library:
-    $ sudo apt-get install python-dev python3-dev
-    $ sudo apt-get install mercurial
-    $ sudo apt-get install python-pip python3-pip
-    $ sudo apt-get remove python-rpi.gpio python3-rpi.gpio
-    $ sudo pip install hg+http://hg.code.sf.net/p/raspberry-gpio-python/code#egg=RPi.GPIO
-    $ sudo pip-3.2 install hg+http://hg.code.sf.net/p/raspberry-gpio-python/code#egg=RPi.GPIO
-To revert back to the default version in Raspbian:
-    $ sudo pip uninstall RPi.GPIO
-    $ sudo pip-3.2 uninstall RPi.GPIO
-    $ sudo apt-get install python-rpi.gpio python3-rpi.gpio
 Other Distributions
 It is recommended that you install RPi.GPIO using the pip utility as superuser (root):it ensure that the library is installed system-wide and accessible to all users.
-    $ sudo pip install RPi.GPIO
+    $ sudo pip install RPi.GPIO    OR   $ sudo pip3 install RPi.GPIO 
+
+NOTE
+if there is an GPIO error says   "error: failed to add edge detection.you need to install the following dependencies if there is an error named as failed to add egde detection." try the following commands 
+     $ sudo apt-get install python3-rpi.gpio
+     $ pip install lgpio==0.0.0.2
+     $ ls -l /sys/class/gpio/
+     $ sudo chmod 777 /sys/class/gpio/export 
+     $ sudo echo 6 > /sys/class/gpio/export 
+     $ ls /sys/class/gpio/
+     $ ls -l /sys/class/gpio/gpio6/ 
+     $ sudo chmod 777 /sys/class/gpio/gpio6/direction 
+     $ sudo echo in > /sys/class/gpio/gpio6/direction 
+     $ ls -l /sys/class/gpio/gpio6/direction 
+     $ ls -l /sys/class/gpio/gpio6/edge 
+     $ sudo chmod 777 /sys/class/gpio/gpio6/edge 
 
 
 
+# influxdb-client installation
 if we are installing rasbian os 64 bit
 pip install influxdb-client won't work.they will recomment to try using apt.but apt doesnot contain the package influxdb-cleint.so we need to create a virtual environment for installing influxdb client.
 
 if we are installing ubuntu server os 22.04.4
-pip install influxdb client works perfectly,but gpio says error: failed to add edge detection.you need to install the following dependencies if there is an error named as failed to add egde detection.
-
-# GPIO setup in Raspberry Pi
-sudo apt-get install python3-rpi.gpio
-pip install lgpio==0.0.0.2
-ls -l /sys/class/gpio/
-sudo chmod 777 /sys/class/gpio/export 
-sudo echo 6 > /sys/class/gpio/export 
-ls /sys/class/gpio/
-ls -l /sys/class/gpio/gpio6/ 
-sudo chmod 777 /sys/class/gpio/gpio6/direction 
-sudo echo in > /sys/class/gpio/gpio6/direction 
-ls -l /sys/class/gpio/gpio6/direction 
-ls -l /sys/class/gpio/gpio6/edge 
-sudo chmod 777 /sys/class/gpio/gpio6/edge 
-
-
-# NOTE
-gpio in linux systems: https://embeddedbits.org/linux-kernel-gpio-user-space-interface-embeddedbits-2/
-https://waldorf.waveform.org.uk/2021/the-pins-they-are-a-changin.html
-
-# another library(new version)
-https://pypi.org/project/rpi-lgpio/#description
-
-
+pip install influxdb client works perfectly
