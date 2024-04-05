@@ -35,7 +35,7 @@ Run script.py
 ```console
 python3 script.py
 ```
-if there is an error check docs/general instructions.txt
+if there is an error check docs/setup_guide.md
 
 ## Working
 GPIO pin 13 of the Raspberry Pi is set in a pulled-up condition by default,achieved through internal resistors and built-in software functions.when there is a tipping action(closing read switch) in davis rain gauge,GPIO 13 pin change it's state from high to low.python code will detect this interrupt (rising edge of interrupt signal) and count it.A bouncing delay of 50ms is added to mitigate switch bouncing issues.In every 5 minutes interval the count will convert into amount of rainfall.The rainfall data will store in influxdb and as csv file along with time stamping in raspberry-pi. Data stored in rasberry pi can be accessed by ssh protocol if we unabled ssh service in raspberry-pi. visualization of data is possible using grafana.
