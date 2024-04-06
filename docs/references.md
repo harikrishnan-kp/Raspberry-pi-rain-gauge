@@ -9,8 +9,9 @@
 * (details about RPi.GPIO) https://sourceforge.net/p/raspberry-gpio-python/wiki/Inputs/ 
 * http://raspi.tv/2013/how-to-use-interrupts-with-python-on-the-raspberry-pi-and-rpi-gpio-part-3
 * https://waldorf.waveform.org.uk/2021/the-pins-they-are-a-changin.html
-* (new GPIO library of - lgpio): https://pypi.org/project/rpi-lgpio/
+* (new GPIO library - lgpio): https://pypi.org/project/rpi-lgpio/
 * (domuntation of igpio):   https://rpi-lgpio.readthedocs.io/en/release-0.4/
+* (repository of lgpio) https://github.com/waveform80/rpi-lgpio
 * (GPIO in linux systems) https://embeddedbits.org/linux-kernel-gpio-user-space-interface-embeddedbits-2/  
 * https://git.kernel.org/pub/scm/linux/kernel/git/linusw/linux-gpio.git/?h=v4.7
 * http://abyz.me.uk/lg/py_lgpio.html
