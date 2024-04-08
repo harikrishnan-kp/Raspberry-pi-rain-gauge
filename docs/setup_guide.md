@@ -15,12 +15,14 @@ OR
 ```bash
 sudo pip3 install RPi.GPIO 
 ```
+OR
+```bash
+sudo apt-get install python3-rpi.gpio 
+```
 ### NOTE
-If there is an GPIO error says   "error: failed to add edge detection".try the following commands 
+If there is an GPIO error "error: failed to add edge detection".reboot your device 
 
 ```bash     
-sudo apt-get install python3-rpi.gpio
-pip install lgpio==0.0.0.2
 sudo reboot
 ```
 
