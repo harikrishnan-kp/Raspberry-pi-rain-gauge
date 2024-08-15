@@ -53,8 +53,10 @@ Despite these limitations, tipping bucket rain gauges remain valuable tools for 
 ## Errors need to be resolved
 The bouncing time delay (50ms)provided in the program may result in errors in counting(ie,when switch is in a closed condition for more than 50ms).possibility of this error need to be examined and resolved.
 
-## Future updates
-* Data logging feature need to improved,as of now it is difficult to take desired data when there is alot of data.data logging must be structured based on days,hour for easy accessing data.
+##   TODO
+* Data logging must be structured based on days,hour for easy accessing data.
+* add provision to load influxDB credentials from yaml file
+* add influxdb and grafana in picture
 
 ### FAQ
 why raspberry pi is choosed instead of other boards as DAQ: our icfoss R&D team was working on a acoustic rain gauge using machine learning technology.machine learning model was teached by comparing data collected from acoustic DAQ setup and davis mechanical rain guage.Both data gathering setup were using arduino as processing unit.but sampling rate of arduino was not enough for training ML model,To compensate the issue we switched our sound data gathering system to raspberry pi-4 which can provide high sampling rate compared to arduino.inorder to make data comparison easy and to resolve issues related to timestamping, davis rain gauge is also moved to raspberry pi DAQ.
